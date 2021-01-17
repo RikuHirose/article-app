@@ -14,5 +14,10 @@
     <body class="antialiased">
         home
         <a href="{{ route('about') }}">about</a>
+
+        @foreach($articles as $article)
+            <p>{{ $article->title }}</p>
+            <p>{{ $article->description }}</p>
+        @endforeach
     </body>
 </html>

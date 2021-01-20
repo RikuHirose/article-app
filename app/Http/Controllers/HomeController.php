@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $articles = Article::all();
 
-        return view('welcome', [
+        return view('home', [
             'articles' => $articles
         ]);
     }

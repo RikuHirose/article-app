@@ -15,13 +15,16 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/about', [HomeController::class, 'about'])->name('about');
+  Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+
+  Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
-
-Route::group(['middleware' => 'auth'], function () {
-  Route::get('/about', [HomeController::class, 'about'])->name('about');
-});
 
 Auth::routes();
 

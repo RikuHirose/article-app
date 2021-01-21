@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
     @foreach($articles as $article)
         <div class="c-post-block">
             <div class="post">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,12 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
+
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/about', [HomeController::class, 'about'])->name('about');
+});
 
 Auth::routes();
 

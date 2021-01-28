@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
   Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+  Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

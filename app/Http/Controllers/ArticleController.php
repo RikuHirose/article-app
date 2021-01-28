@@ -41,4 +41,34 @@ class ArticleController extends Controller
 
         return redirect(route('index'));
     }
+
+    public function edit(int $id)
+    {
+        $article = Article::find($id);
+
+        if (empty($article)) {
+            return redirect(route('index'));
+        }
+
+        return view('pages.article.edit', [
+            'article' => $article
+        ]);
+    }
+
+    public function update(int $id, Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'description'  => 'required|min:3',
+        ]);
+
+        $article = Article::find($id);
+        $article->title = $request->input('title');
+        $article->description = $request->input('description');
+        $article->save();
+
+        return redirect(route('index'));
+    }
+
+
 }

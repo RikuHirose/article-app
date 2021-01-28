@@ -41,5 +41,11 @@
                 comment
             </p>
         </div>
+
+        <div class="text-center">
+            <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-primary">edit</a>
+        </div>
+
+
     </div>
 @endsection

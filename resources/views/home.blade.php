@@ -17,7 +17,7 @@
 
             <div class="post-image">
               <a href="{{ route('articles.show', $article->id) }}">
-                <img src="https://www.wallpaperup.com/uploads/wallpapers/2013/07/01/112481/62c30d7e73033ad264c790b63b233bba-700.jpg" width="100%"/>
+                <img src="{{ $article->img_url }}" width="100%"/>
               </a>
             </div>
 

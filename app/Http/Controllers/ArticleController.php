@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -29,13 +30,21 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'image' => 'image',
             'title' => 'required|max:255',
             'description'  => 'required|min:3',
         ]);
 
-        $article = new Article();
-        $article->title = $request->input('title');
+        $fileName = $request->file('image')->getClientOriginalName();
+
+        Storage::putFileAs('public/images', $request->file('image'), $fileName);
+
+        $fullFilePath = '/storage/images/'. $fileName;
+
+        $article              = new Article();
+        $article->title       = $request->input('title');
         $article->description = $request->input('description');
+        $article->img_url     = $fullFilePath;
 
         $article->save();
 

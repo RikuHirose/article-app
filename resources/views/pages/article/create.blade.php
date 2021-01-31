@@ -13,8 +13,14 @@
         </div>
     @endif
 
-    <form action="{{ route('articles.store') }}" method="POST">
+    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
+
+      <div class="form-group">
+        <label>file</label>
+        <input type="file" class="form-control" name="image" accept="image/jpeg,image/gif,image/png" required>
+      </div>
+
       <div class="form-group">
         <label>title</label>
         <input type="text" class="form-control"placeholder="Enter title" name="title">

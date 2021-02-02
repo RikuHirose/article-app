@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @foreach($articles as $article)
         <div class="c-post-block">
             <div class="post">
@@ -33,7 +32,7 @@
                 <!-- auth user comment -->
                 <p>
                     <span class="user-name">
-                        {{ $article->title }}
+                        {{ $article->titless }}
                     </span>
                     {{ $article->description }}
                 </p>

@@ -19,12 +19,12 @@
 
       <div class="form-group">
         <label>title</label>
-        <input type="text" class="form-control" placeholder="Enter title" name="title" value="{{ $article->title }}">
+        <input type="text" class="form-control" placeholder="Enter title" name="title" value="{{ old('title') ? old('title') : $article->title }}">
       </div>
 
       <div class="form-group">
         <label>description</label>
-        <textarea class="form-control" rows="3" name="description">{{ $article->description }}</textarea>
+        <textarea class="form-control" rows="3" name="description">{{ old('description') ? old('description') : $article->description }}</textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

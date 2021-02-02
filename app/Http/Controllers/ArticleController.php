@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -27,26 +28,19 @@ class ArticleController extends Controller
         return view('pages.article.create');
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $request->validate([
-            'image' => 'image',
-            'title' => 'required|max:255',
-            'description'  => 'required|min:3',
-        ]);
-
         $fileName = $request->file('image')->getClientOriginalName();
 
         Storage::putFileAs('public/images', $request->file('image'), $fileName);
 
         $fullFilePath = '/storage/images/'. $fileName;
 
-        $article              = new Article();
-        $article->title       = $request->input('title');
-        $article->description = $request->input('description');
-        $article->img_url     = $fullFilePath;
-
-        $article->save();
+        Article::create([
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'img_url'     => $fullFilePath,
+        ]);
 
         return redirect(route('index'));
     }
@@ -64,7 +58,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function update(int $id, Request $request)
+    public function update(int $id, ArticleRequest $request)
     {
         $request->validate([
             'title' => 'required|max:255',
@@ -72,9 +66,11 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::find($id);
-        $article->title = $request->input('title');
-        $article->description = $request->input('description');
-        $article->save();
+
+        $article->fill([
+            'title' => $request->input('title'),
+            'description' => $request->input('description')
+        ])->save();
 
         return redirect(route('index'));
     }

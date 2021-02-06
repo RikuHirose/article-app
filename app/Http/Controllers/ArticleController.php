@@ -37,6 +37,7 @@ class ArticleController extends Controller
         $fullFilePath = '/storage/images/'. $fileName;
 
         Article::create([
+            'user_id'     => \Auth::user()->id,
             'title'       => $request->input('title'),
             'description' => $request->input('description'),
             'img_url'     => $fullFilePath,

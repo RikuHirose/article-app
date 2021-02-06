@@ -15,8 +15,14 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'img_url',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+    }
 }

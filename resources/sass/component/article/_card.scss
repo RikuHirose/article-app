@@ -1,4 +1,5 @@
-.c-post-block {
+
+.c-article-card {
   margin-bottom: 8px;
   border: 1px solid #efefef;
   font-size: 12px;
@@ -15,11 +16,11 @@
   flex-direction: column;
   // height:100%;
 
-  .post *{
+  .article *{
     padding:5px 0px;
   }
 
-  .post{
+  .article{
     display: flex;
     align-items:center;
     padding:0px 10px;

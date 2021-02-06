@@ -10944,7 +10944,7 @@ a.text-dark:focus {
   }
 }
 
-.c-post-block {
+.c-article-card {
   margin-bottom: 8px;
   border: 1px solid #efefef;
   font-size: 12px;
@@ -10956,105 +10956,105 @@ a.text-dark:focus {
   flex-direction: column;
 }
 
-.c-post-block img {
+.c-article-card img {
   display: inline-block;
 }
 
-.c-post-block .post * {
+.c-article-card .article * {
   padding: 5px 0px;
 }
 
-.c-post-block .post {
+.c-article-card .article {
   display: flex;
   align-items: center;
   padding: 0px 10px;
   justify-content: space-between;
 }
 
-.c-post-block .post .name a {
+.c-article-card .article .name a {
   display: contents;
   text-decoration: none;
   color: black;
 }
 
-.c-post-block .post-image img {
+.c-article-card .article-image img {
   width: 100%;
   max-height: 272px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.c-post-block .post .profile-img {
+.c-article-card .article .profile-img {
   border-radius: 50%;
   width: 20%;
 }
 
-.c-post-block .post .detail-img {
+.c-article-card .article .detail-img {
   width: 2%;
   opacity: 0.5;
 }
 
-.c-post-block .post .name {
+.c-article-card .article .name {
   display: flex;
   justify-content: flex-start;
 }
 
-.c-post-block .post .name p {
+.c-article-card .article .name p {
   padding-left: 5px;
   font-weight: 600;
   font-size: 13px;
 }
 
-.c-post-block .likes {
+.c-article-card .likes {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.c-post-block .likes img {
+.c-article-card .likes img {
   width: 5%;
 }
 
-.c-post-block .likes form {
+.c-article-card .likes form {
   padding: 0;
   display: inline;
 }
 
-.c-post-block .likes * {
+.c-article-card .likes * {
   padding: 5px 5px 0 5px;
 }
 
-.c-post-block .like-count {
+.c-article-card .like-count {
   display: flex;
   align-items: center;
   padding: 0px 10px;
 }
 
-.c-post-block .like-count img {
+.c-article-card .like-count img {
   width: 3%;
 }
 
-.c-post-block .like-count p {
+.c-article-card .like-count p {
   padding: 5px;
   font-weight: bold;
 }
 
-.c-post-block .comments {
+.c-article-card .comments {
   padding: 0px 10px;
 }
 
-.c-post-block .comments .user-name {
+.c-article-card .comments .user-name {
   margin-right: 4px;
   font-weight: 600;
 }
 
-.c-post-block .comment-input {
+.c-article-card .comment-input {
   margin-top: 8px;
   border-top: 1px solid #efefef;
   width: 100%;
 }
 
-.c-post-block .comment-input input {
+.c-article-card .comment-input input {
   width: 79%;
   border: none;
   padding: 8px;
@@ -11062,7 +11062,7 @@ a.text-dark:focus {
   font-size: 11px;
 }
 
-.c-post-block .comment-input button {
+.c-article-card .comment-input button {
   width: 20%;
   font-size: 11px;
 }

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="c-post-block">
-        <div class="post">
+    <div class="c-article-card">
+        <div class="article">
           <div class="name">
             <a href="">
                 <img src="https://randomuser.me/api/portraits/women/84.jpg" class="profile-img"/>
@@ -13,7 +13,7 @@
           </div>
         </div>
 
-        <div class="post-image">
+        <div class="article-image">
           <a href="">
             <img src="{{ $article->img_url }}" width="100%"/>
           </a>

@@ -33,9 +33,11 @@
             {{ $article->description }}
         </p>
 
-        <p>
-            <span class="user-name">{{ $article->user->name }}</span>
-            comment
-        </p>
+        @foreach($article->comments as $comment)
+            <p>
+                <span class="user-name">{{ $comment->user->name }}</span>
+                {{ $comment->text }}
+            </p>
+        @endforeach
     </div>
 </div>

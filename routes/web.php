@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
   Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
   Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

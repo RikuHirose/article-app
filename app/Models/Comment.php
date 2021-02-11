@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Comment extends Model
 {
     use HasFactory;
 
@@ -16,9 +16,8 @@ class Article extends Model
      */
     protected $fillable = [
         'user_id',
-        'title',
-        'description',
-        'img_url',
+        'article_id',
+        'text',
     ];
 
     public function user()
@@ -26,8 +25,8 @@ class Article extends Model
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
 
-    public function comments()
+    public function article()
     {
-        return $this->hasMany(\App\Models\Comment::class, 'article_id', 'id');
+        return $this->belongsTo(\App\Models\Article::class, 'article_id', 'id');
     }
 }

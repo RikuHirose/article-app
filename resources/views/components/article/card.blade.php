@@ -4,7 +4,7 @@
         <a href="">
             <img src="https://randomuser.me/api/portraits/women/84.jpg" class="profile-img"/>
             <p>
-                {{ $article->user->name }}
+                {{ $article->user->profile->display_name }}
             </p>
         </a>
       </div>

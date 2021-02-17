@@ -10,10 +10,20 @@ use App\Http\Requests\CommentRequest;
 
 class UserController extends Controller
 {
+    public function likesIndex(Request $request)
+    {
+        $user = \Auth::user();
+        $user->load('likedArticles');
+
+        return view('pages.user.like-index', [
+            'user' => $user
+        ]);
+    }
+
     public function show(int $id, Request $request)
     {
         $user = User::find($id);
-        $user->load('profile', 'articles.comments');
+        $user->load('profile', 'articles.comments', 'likedArticles');
 
         return view('pages.user.show', [
             'user' => $user

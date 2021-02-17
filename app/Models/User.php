@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasOne(\App\Models\Profile::class, 'user_id', 'id');
     }
 
+    public function likedArticles()
+    {
+        return $this->belongsToMany(\App\Models\Article::class, 'likes', 'user_id', 'article_id');
+    }
+
     public function articles()
     {
         return $this->hasMany(\App\Models\Article::class, 'user_id', 'id');

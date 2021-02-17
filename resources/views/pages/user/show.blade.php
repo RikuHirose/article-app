@@ -33,8 +33,17 @@
               </li>
               <li>
                 <a href="">
-                  <span class="profile-stat-count">1</span> following</li>
+                  <span class="profile-stat-count">1</span> following
                 </a>
+              </li>
+
+              <li>
+                <a href="{{ route('users.show.likes.index', $user->id) }}">
+                  <span class="profile-stat-count">
+                    {{ count($user->likedArticles) }}
+                  </span> liked
+                </a>
+              </li>
             </ul>
           </div>
       </div>

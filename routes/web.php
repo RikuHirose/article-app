@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
   Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
   Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+  Route::get('/users/{id}/likes', [UserController::class, 'likesIndex'])->name('users.show.likes.index');
+
+  Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
+  Route::delete('/likes/{id}', [LikeController::class, 'destroy'])->name('likes.destroy');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

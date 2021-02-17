@@ -18,9 +18,26 @@
 
     <div class="likes">
         <div class="left-icons">
+            @if($article->is_like)
+              <form action="{{ route('likes.destroy', $article->like_id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
 
-          <img src="https://image.flaticon.com/icons/svg/60/60993.svg"/>3
-          <!-- <img src="https://image.flaticon.com/icons/svg/25/25424.svg"/> -->
+                  <button type="submit" style="display: contents;">
+                    <img src="https://image.flaticon.com/icons/svg/60/60993.svg"/>
+                    {{ count($article->likes) }}
+                  </button>
+              </form>
+            @else
+              <form action="{{ route('likes.store') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="article_id"  value="{{ $article->id }}">
+                  <button type="submit" style="display: contents;">
+                    <img src="https://image.flaticon.com/icons/svg/25/25424.svg"/>
+                    {{ count($article->likes) }}
+                  </button>
+              </form>
+            @endif
         </div>
     </div>
 

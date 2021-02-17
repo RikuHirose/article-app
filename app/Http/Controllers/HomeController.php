@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->with('user')->get();
+        $articles = Article::orderBy('created_at', 'desc')->with('user', 'likes')->get();
 
         return view('home', [
             'articles' => $articles

@@ -7,9 +7,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CommentRequest;
+use App\Services\ImageService;
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $this->imageService = new ImageService();
+    }
+
     public function likesIndex(Request $request)
     {
         $user = \Auth::user();
@@ -54,9 +59,8 @@ class UserController extends Controller
         $input = $request->only($user->profile->getFillable());
 
         if ($request->hasFile('cover')) {
-            $fileName = $request->file('cover')->getClientOriginalName();
-            Storage::putFileAs('public/images', $request->file('cover'), $fileName);
-            $fullFilePath = '/storage/images/'. $fileName;
+
+            $fullFilePath = $this->imageService->upload($request->file('cover'));
 
             $input['cover_url'] = $fullFilePath;
         }

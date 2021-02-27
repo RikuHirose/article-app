@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ArticleRequest;
+
+use App\Services\ImageService;
 
 class ArticleController extends Controller
 {
+    public function __construct() {
+        $this->imageService = new ImageService();
+    }
+
     public function show($id)
     {
         $article = Article::where('id', $id)->with('user', 'comments.user')->first();
@@ -30,11 +35,7 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request)
     {
-        $fileName = $request->file('image')->getClientOriginalName();
-
-        Storage::putFileAs('public/images', $request->file('image'), $fileName);
-
-        $fullFilePath = '/storage/images/'. $fileName;
+        $fullFilePath = $this->imageService->upload($request->file('image'));
 
         Article::create([
             'user_id'     => \Auth::user()->id,

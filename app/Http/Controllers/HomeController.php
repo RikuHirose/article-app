@@ -41,7 +41,7 @@ class HomeController extends Controller
             $articles = $articles->withCount('likes')->orderBy('likes_count', 'desc');
         }
 
-        $articles = $articles->get();
+        $articles = $articles->paginate(2);
 
         return view('home', [
             'articles' => $articles

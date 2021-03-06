@@ -26,4 +26,7 @@
     @foreach($articles as $article)
         @include('components.article.card', ['article' => $article])
     @endforeach
+
+    {{ $articles->appends(['text' => Request::get('text'), 'order_by' => Request::get('order_by')])->links() }}
+
 @endsection

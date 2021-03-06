@@ -22,9 +22,6 @@
 
   .profile-image img {
       border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
   }
 
   .profile-user-settings,
@@ -51,6 +48,27 @@
       border-radius: 0.3rem;
       padding: 0 24px;
       margin-left: 8px;
+      min-width: 120px;
+  }
+
+  .profile-btn {
+    font-size: 16px;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 24px;
+    margin-left: 8px;
+    min-width: 120px;
+
+    &__unfollow {
+      padding: 4px 0;
+      background-color: rgb(29, 161, 242);
+      color: #fff;
+    }
+
+    &__follow {
+      padding: 4px 0;
+    }
   }
 
   .profile-settings-btn {
@@ -177,11 +195,8 @@
   }
 
   /*
-
   The following code will only run if your browser supports CSS grid.
-
   Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
-
   */
 
   @supports (display: grid) {

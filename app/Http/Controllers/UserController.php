@@ -15,9 +15,29 @@ class UserController extends Controller
         $this->imageService = new ImageService();
     }
 
-    public function likesIndex(Request $request)
+    public function followsIndex(int $id, Request $request)
     {
-        $user = \Auth::user();
+        $user = User::find($id);
+        $filter = $request->query();
+
+        if (isset($filter['type']) && $filter['type'] === 'following') {
+            // userのfollow中のuserを取得
+            $users = $user->followingUsers;
+        }
+
+        if (isset($filter['type']) && $filter['type'] === 'followers') {
+            // userのfollowerを取得
+            $users = $user->followerUsers;
+        }
+
+        return view('pages.user.follow-index', [
+            'users' => $users
+        ]);
+    }
+
+    public function likesIndex(int $id, Request $request)
+    {
+        $user = User::find($id);
         $user->load('likedArticles');
 
         return view('pages.user.like-index', [

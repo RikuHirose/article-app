@@ -11132,11 +11132,8 @@ a.text-dark:focus {
 .c-user-profile {
   /* Profile Section */
   /*
-
   The following code will only run if your browser supports CSS grid.
-
   Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
-
   */
 }
 
@@ -11161,10 +11158,6 @@ a.text-dark:focus {
 
 .c-user-profile .profile-image img {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .c-user-profile .profile-user-settings,
@@ -11191,6 +11184,27 @@ a.text-dark:focus {
   border-radius: 0.3rem;
   padding: 0 24px;
   margin-left: 8px;
+  min-width: 120px;
+}
+
+.c-user-profile .profile-btn {
+  font-size: 16px;
+  line-height: 1.8;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 0 24px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.c-user-profile .profile-btn__unfollow {
+  padding: 4px 0;
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+.c-user-profile .profile-btn__follow {
+  padding: 4px 0;
 }
 
 .c-user-profile .profile-settings-btn {

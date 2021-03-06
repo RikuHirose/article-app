@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
   Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
   Route::get('/users/{id}/likes', [UserController::class, 'likesIndex'])->name('users.show.likes.index');
+  Route::get('/users/{id}/follows', [UserController::class, 'followsIndex'])->name('users.show.follows.index');
 
   Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
   Route::delete('/likes/{id}', [LikeController::class, 'destroy'])->name('likes.destroy');
+
+  Route::post('/follows', [FollowController::class, 'store'])->name('follows.store');
+  Route::delete('/follows/{id}', [FollowController::class, 'destroy'])->name('follows.destroy');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
